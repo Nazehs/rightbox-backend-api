@@ -29,7 +29,6 @@ const newOrderRequestTemplate = (order) => {
   </style>
   <title></title>
 </head>
-
 <body>
   Hi Tom/Axl, Kindly find the below new order request.
   <br />
@@ -39,50 +38,108 @@ const newOrderRequestTemplate = (order) => {
   </h4>
   <table cellpadding="0" cellspacing="0" role="presentation">
       <tbody>
+          ${order.items
+            .map(
+              (item) => `<tr>
+              <td>
+                  <p>
+                      <b> Product name:</b> ${item.name}
+                  </p>
+                  <p>
+                  <b> Product code:</b> ${item.code}
+              </p>
+                  <p>
+                      <b> Quantity:</b> ${item.count}
+                  </p>
+                  <p>
+                      <b> Box width</b>: ${item?.width}
+                  </p>
+                  <p>
+                      <b> Box Height</b>: ${item.height}
+                  </p>
+                  <p>
+                      <b>Box Weight:</b> ${item.weight}
+                  </p>
+                  <p>
+                      <b> Box Optics</b>: ${item.boxOptics}
+                  </p>
+                  <p>
+                      <b> Numbers of colors</b>: ${item.name}
+                  </p>
+                  <p>
+                      <b> Estimated Annual Boxes </b> : ${item.estimatedBoxes}
+                  </p>
+                  <p>
+                      <b> Order Number</b>: ${item.orderNumber}
+                  </p>
+                  <p>
+                      <b> Board Grade</b>: ${item.boardgrade}
+                  </p>
+                  <p>
+                      <b> Average Weight</b>: ${item.averageweight}
+                  </p>
+                  <p>
+                      <b> Print type</b>: ${item.printType}
+                  </p>
+                  <p>
+                      <b> supplier Can Suggest</b>: ${item.supplierCanSuggest}
+                  </p>
+                  <p>
+                      <b> precise Box Needed</b>: ${
+                        item.preciseBoxNeeded ? "Yes" : "No"
+                      }
+                  </p>
+                  <p>
+                      <b> numberOfColours</b>: ${item.numberOfColours}
+                  </p>
+                  <p>
+                      <b> suggestPrintType</b>: ${
+                        item.suggestPrintType ? "Yes" : "No"
+                      }
+                  </p>
+                  <p>
+                      <b> is stacked product</b>: ${
+                        item.isStackedProduct ? "Yes" : "No"
+                      }
+                  </p>
+                  <hr />
+              </td>
+          </tr>`
+            )
+            .join("")}
           <tr>
               <td>
                   <p>
-                  <b>  Product name:</b> ${order.name}
+                      <b>Full Name</b>: ${order.fullName}
                   </p>
                   <p>
-                  <b>   Quantity:</b> ${order.count}
+                      <b>
+                          User Address
+                      </b> : ${order.userAddress}
                   </p>
                   <p>
-                  <b>  Box width</b>: ${order?.width}
+                      <b> email</b>: ${order.email}
                   </p>
                   <p>
-                  <b>   Box Height</b>: ${order.height}
+                      <b> Company Sector</b>: ${order.companySector}
                   </p>
                   <p>
-                  <b>Box Weight:</b> ${order.weight}
+                      <b> Post Code</b>: ${order.postCode}
                   </p>
                   <p>
-                  <b> Box Optics</b>: ${order.boxOptics}
+                      <b> Phone Number</b>: ${order.phoneNumber}
                   </p>
                   <p>
-                  <b>  Numbers of colors</b>: ${order.name}
+                      <b> Delivery Address</b>: ${order.deliveryAddress}
                   </p>
                   <p>
-                  <b>   Estimated Annual Boxes  </b> : ${order.estimatedBoxes}
-                  </p>
-                  <p>
-                  <b> Order Number</b>: ${order.orderNumber}
-                  </p>
-                  <p>
-                  <b> Board Grade</b>: ${order.boardgrade}
-                  </p>
-                  <p>
-                  <b> Average Weight</b>: ${order.averageweight}
-                  </p>
-                  <p>
-                  <b> Print type</b>: ${order.printType}
+                      <b> User Address</b>: ${order.userAddress}
                   </p>
               </td>
           </tr>
       </tbody>
   </table>
 </body>
-
 </html>`;
   return emailTemplate;
 };
