@@ -7,12 +7,25 @@ const sendOrderRequestEmail = (req, res) => {
     const { type, ...body } = req.body;
     // email template
     let template;
+    let attachment;
     switch (type) {
       case "order":
+        const { items } = body;
+        attachment = items.reduce(
+          (attachments, item) =>
+            attachments.concat(
+              item.attachment.map((attach) => {
+                return {
+                  path: attach,
+                };
+              })
+            ),
+          []
+        );
         template = newOrderRequestTemplate(body);
+        console.log(attachment);
         break;
       case "contact":
-        console.log("here");
         template = requestQuoteTemplate(body);
         break;
       default:
@@ -46,6 +59,7 @@ const sendOrderRequestEmail = (req, res) => {
       amp: `<!doctype html>`,
       //   html template
       html: `${template}`,
+      attachments: attachment,
     };
 
     // verify the account
@@ -58,7 +72,7 @@ const sendOrderRequestEmail = (req, res) => {
             console.log(err);
             res.json({
               status: 1,
-              success: failed,
+              success: false,
               message: "Oop! an error occurred!",
             });
           } else {
