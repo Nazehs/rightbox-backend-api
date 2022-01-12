@@ -10,7 +10,7 @@ const {
 } = require("../middlewares/verifyToken");
 const fileUpload = require("../middlewares/fileUpload");
 const cardboard = require("../controllers/cardboardModelController");
-const sendOrderRequestEmail = require("../controllers/EmailCOntroller");
+const sendOrderRequestEmail = require("../controllers/EmailController");
 const router = express.Router();
 
 // refresh token route
