@@ -26,7 +26,7 @@ const options = {
   optionSuccessStatus: 200,
 };
 app.use(express.urlencoded({ extended: false }));
-// app.use(cors(options));
+app.use(cors());
 app.use("/api", allRoutes);
 app.use((err, req, res, next) => {
   res
