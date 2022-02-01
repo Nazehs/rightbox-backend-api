@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const notifyMeTemplate = require("../utils/notifyMe");
 const newOrderRequestTemplate = require("../utils/orderRequestTemplate");
 const requestQuoteTemplate = require("../utils/requestQuoteTemplate");
 
@@ -27,6 +28,9 @@ const sendOrderRequestEmail = (req, res) => {
         break;
       case "contact":
         template = requestQuoteTemplate(body);
+        break;
+      case "notify":
+        template = notifyMeTemplate(body);
         break;
       default:
         template = "";
