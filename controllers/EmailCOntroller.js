@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const notifyMeTemplate = require("../utils/NotifyMe");
+const notifyMeTemplate = require("../utils/notifyMe");
 const newOrderRequestTemplate = require("../utils/orderRequestTemplate");
 const requestQuoteTemplate = require("../utils/requestQuoteTemplate");
 
