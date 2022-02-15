@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("newrelic");
 const express = require("express");
 const connection = require("./configs/connection");
 const config = require("./configs/config");

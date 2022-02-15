@@ -24,7 +24,7 @@ const sendOrderRequestEmail = (req, res) => {
           []
         );
         template = newOrderRequestTemplate(body);
-        console.log(attachment);
+
         break;
       case "contact":
         template = requestQuoteTemplate(body);
