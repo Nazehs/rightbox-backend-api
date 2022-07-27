@@ -1,4 +1,5 @@
 const newOrderRequestTemplate = (order) => {
+  console.log(order);
   const emailTemplate = `<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
   xmlns:v="urn:schemas-microsoft-com:vml">
 
@@ -49,7 +50,7 @@ const newOrderRequestTemplate = (order) => {
                   <b> Product code:</b> ${item.code}
               </p>
                   <p>
-                      <b> Quantity:</b> ${item.count}
+                      <b> Quantity:</b> ${item.estimatedQuantity}
                   </p>
                   <p>
                       <b> Box width</b>: ${item?.width}
@@ -58,7 +59,7 @@ const newOrderRequestTemplate = (order) => {
                       <b> Box Height</b>: ${item.height}
                   </p>
                   <p>
-                      <b>Box Weight:</b> ${item.weight}
+                      <b>Box length:</b> ${item.length}
                   </p>
                   <p>
                       <b> Box Optics</b>: ${item.boxOptics}
@@ -70,7 +71,7 @@ const newOrderRequestTemplate = (order) => {
                       <b> Estimated Annual Boxes </b> : ${item.estimatedBoxes}
                   </p>
                   <p>
-                      <b> Order Number</b>: ${item.orderNumber}
+                      <b> Order Number</b>: ${order.orderNumber}
                   </p>
                   <p>
                       <b> Board Grade</b>: ${item.boardgrade}
@@ -82,7 +83,9 @@ const newOrderRequestTemplate = (order) => {
                       <b> Print type</b>: ${item.printType}
                   </p>
                   <p>
-                      <b> supplier Can Suggest</b>: ${item.supplierCanSuggest}
+                      <b> supplier Can Suggest</b>: ${
+                        item.supplierCanSuggest ? "Yes" : "No"
+                      }
                   </p>
                   <p>
                       <b> precise Box Needed</b>: ${
