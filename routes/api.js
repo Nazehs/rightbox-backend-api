@@ -142,7 +142,7 @@ router.post("/cardboard/create", cardboard.createCardboard);
 
 router.get("/cardboard/query/all", cardboard.getAllCardBoard);
 
-router.put("/cardboard/edit/update", cardboard.updateCardBoard);
+router.put("/cardboard/edit/update/:cardboardID", cardboard.updateCardBoard);
 
 router.delete("/cardboard/edit/delete/", cardboard.deleteCardBoard);
 

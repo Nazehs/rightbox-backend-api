@@ -89,8 +89,9 @@ class CardBoardModelController {
    */
   static async updateCardBoard(request, response, next) {
     try {
+      const { cardboardID } = request.params;
       let doc = await cardboardRequest.findOneAndUpdate(
-        { cardboardID: request.body.cardboardID },
+        { cardboardID },
         { $set: request.body }
       );
 
@@ -189,13 +190,11 @@ class CardBoardModelController {
       // cardboards.pageSize = cardboards.
     } catch (e) {
       console.log(e);
-      return res
-        .status(500)
-        .json({
-          status: 1,
-          success: false,
-          message: "Oops! an error occurred!",
-        });
+      return res.status(500).json({
+        status: 1,
+        success: false,
+        message: "Oops! an error occurred!",
+      });
     }
   }
 }
