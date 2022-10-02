@@ -142,12 +142,12 @@ router.post("/cardboard/create", cardboard.createCardboard);
 
 router.get("/cardboard/query/all", cardboard.getAllCardBoard);
 
-router.put("/cardboard/edit/update/:cardboardID", cardboard.updateCardBoard);
+router.put("/cardboard/edit/update/:code", cardboard.updateCardBoard);
 
 router.delete("/cardboard/edit/delete/", cardboard.deleteCardBoard);
 
-router.delete("/cardboard/edit/delete/:cardbordID", cardboard.deleteCardBoard);
+router.delete("/cardboard/edit/delete/:code", cardboard.deleteCardBoard);
 
-router.get("cardboard/info/query/:cardbordID", cardboard.getCardBoardDetails);
+router.get("cardboard/info/query/:code", cardboard.getCardBoardDetails);
 
 module.exports = router;

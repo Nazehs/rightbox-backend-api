@@ -1,13 +1,4 @@
-const cryto = require("crypto");
-const config = require("../configs/config");
-const query = require("../helpers/queryHelper");
 const { NotFound, BadRequest } = require("../utils/GeneralErrors");
-const {
-  createAccessToken,
-  refreshAccessToken,
-  sendRefreshToken,
-  sendValidResponse,
-} = require("../middlewares/token");
 const queries = require("../helpers/queryHelper");
 let cardboardRequest;
 
@@ -67,9 +58,8 @@ class CardBoardModelController {
    * @param  {} next
    */
   static async deleteCardBoard(request, response, next) {
-    let doc = await cardboardRequest.deleteMany({
-      cardboardID: { $in: [request.params.cardboardID] },
-    });
+    const { code } = request.params;
+    let doc = await cardboardRequest.removeOne({ code });
 
     if (doc.deletedCount !== 0) {
       response.status(204).send({
@@ -89,9 +79,9 @@ class CardBoardModelController {
    */
   static async updateCardBoard(request, response, next) {
     try {
-      const { cardboardID } = request.params;
+      const { code } = request.params;
       let doc = await cardboardRequest.findOneAndUpdate(
-        { cardboardID },
+        { code },
         { $set: request.body }
       );
 
