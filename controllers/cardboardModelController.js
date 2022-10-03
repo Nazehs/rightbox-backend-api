@@ -165,7 +165,7 @@ class CardBoardModelController {
     try {
       const { code } = request.params;
       let doc = await cardboardRequest.findOne({ code: code.trim() });
-      if (doc.length > 0) {
+      if (doc) {
         response.status(200).send({
           success: true,
           status: 0,
