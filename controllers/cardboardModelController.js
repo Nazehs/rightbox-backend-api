@@ -145,15 +145,13 @@ class CardBoardModelController {
    */
   static async getCardBoardDetails(request, response, next) {
     try {
-      let doc = await cardboardRequest
-        .find({ cardboardID: request.params.cardboardID.trim() })
-        .toArray();
-      console.log(`request sent for  ${JSON.stringify(request.body)}`);
+      const { code } = request.params;
+      let doc = await cardboardRequest.findOne({ code: code.trim() });
       if (doc.length > 0) {
         response.status(200).send({
           success: true,
           status: 0,
-          message: doc,
+          data: doc,
         });
       } else {
         next(new NotFound("Oops, invalid cardboard ID"));
