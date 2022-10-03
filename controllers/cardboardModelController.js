@@ -88,12 +88,13 @@ class CardBoardModelController {
         response
           .status(200)
           .send({ status: 0, success: true, data: { ...doc.value } });
+      } else {
+        res.status(500).json({
+          status: 1,
+          success: false,
+          message: "Oops! an error occurred!",
+        });
       }
-      return res.status(500).json({
-        status: 1,
-        success: false,
-        message: "Oops! an error occurred!",
-      });
     } catch (error) {
       console.log(error);
       next(new BadRequest("Oops, an error occurred!"));
