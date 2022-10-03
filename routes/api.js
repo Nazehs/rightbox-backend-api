@@ -148,6 +148,6 @@ router.delete("/cardboard/edit/delete/", cardboard.deleteCardBoard);
 
 router.delete("/cardboard/edit/delete/:code", cardboard.deleteCardBoard);
 
-router.get("cardboard/info/query/:code", cardboard.getCardBoardDetails);
+router.get("/cardboard/info/query/:code", cardboard.getCardBoardDetails);
 
 module.exports = router;

@@ -91,6 +91,24 @@ class CardBoardModelController {
     }
   }
 
+  static async getCardBoardByCode(request, response, next) {
+    try {
+      const { code } = request.params;
+      let doc = await cardboardRequest.findOne({ code: code.trim() });
+      if (doc) {
+        response.status(200).send({
+          success: true,
+          status: 0,
+          data: doc,
+        });
+      } else {
+        next(new NotFound("Oops, invalid cardboard ID"));
+      }
+    } catch (error) {
+      next(new NotFound("Oops, an error has occurred"));
+    }
+  }
+
   //  QUERY  ALL USERS
   /**
    * @param  {} _request
