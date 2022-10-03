@@ -82,10 +82,12 @@ class CardBoardModelController {
       const { code } = request.params;
       let doc = await cardboardRequest.findOneAndUpdate(
         { code },
-        { $set: request.body }
+        { $set: { ...request.body } }
       );
 
-      response.status(200).send({ status: 0, success: true, message: doc });
+      response
+        .status(200)
+        .send({ status: 0, success: true, message: doc.message.value });
     } catch (error) {
       next(new BadRequest("Oops, an error occured!"));
     }
