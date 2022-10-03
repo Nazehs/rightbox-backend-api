@@ -95,7 +95,8 @@ class CardBoardModelController {
         message: "Oops! an error occurred!",
       });
     } catch (error) {
-      next(new BadRequest("Oops, an error occured!"));
+      console.log(error);
+      next(new BadRequest("Oops, an error occurred!"));
     }
   }
 
