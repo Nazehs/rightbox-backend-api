@@ -84,11 +84,10 @@ class CardBoardModelController {
         { code },
         { $set: { ...request.body } }
       );
-      console.log(doc);
       if (doc) {
         response
           .status(200)
-          .send({ status: 0, success: true, data: { ...doc.message.value } });
+          .send({ status: 0, success: true, data: { ...doc.value } });
       }
       return res.status(500).json({
         status: 1,
