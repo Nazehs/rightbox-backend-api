@@ -84,10 +84,16 @@ class CardBoardModelController {
         { code },
         { $set: { ...request.body } }
       );
-
-      response
-        .status(200)
-        .send({ status: 0, success: true, message: doc.message.value });
+      if (doc) {
+        response
+          .status(200)
+          .send({ status: 0, success: true, data: { ...doc.message.value } });
+      }
+      return res.status(500).json({
+        status: 1,
+        success: false,
+        message: "Oops! an error occurred!",
+      });
     } catch (error) {
       next(new BadRequest("Oops, an error occured!"));
     }
@@ -197,7 +203,6 @@ class CardBoardModelController {
       }
       // cardboards.pageSize = cardboards.
     } catch (e) {
-      console.log(e);
       return res.status(500).json({
         status: 1,
         success: false,
