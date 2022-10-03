@@ -84,6 +84,7 @@ class CardBoardModelController {
         { code },
         { $set: { ...request.body } }
       );
+      console.log(doc);
       if (doc) {
         response
           .status(200)
