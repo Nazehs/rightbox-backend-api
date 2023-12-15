@@ -1,6 +1,6 @@
 const newOrderRequestTemplate = (order) => {
-  console.log(order);
-  const emailTemplate = `<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+    console.log(order);
+    const emailTemplate = `<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
   xmlns:v="urn:schemas-microsoft-com:vml">
 
 <head>
@@ -41,7 +41,7 @@ const newOrderRequestTemplate = (order) => {
       <tbody>
           ${order.items
             .map(
-              (item) => `<tr>
+                (item) => `<tr>
               <td>
                   <p>
                       <b> Product name:</b> ${item.name}
@@ -68,7 +68,7 @@ const newOrderRequestTemplate = (order) => {
                       <b> Numbers of colors</b>: ${item.name}
                   </p>
                   <p>
-                      <b> Estimated Annual Boxes </b> : ${item.estimatedBoxes}
+                      <b> Estimated Annual Boxes </b> : ${item.estimateAnnualDemandQuantity}
                   </p>
                   <p>
                       <b> Order Number</b>: ${order.orderNumber}
@@ -83,27 +83,23 @@ const newOrderRequestTemplate = (order) => {
                       <b> Print type</b>: ${item.printType}
                   </p>
                   <p>
-                      <b> supplier Can Suggest</b>: ${
-                        item.supplierCanSuggest ? "Yes" : "No"
-                      }
+                      <b> supplier Can Suggest</b>: ${item.supplierCanSuggest ? "Yes" : "No"
+                    }
                   </p>
                   <p>
-                      <b> precise Box Needed</b>: ${
-                        item.preciseBoxNeeded ? "Yes" : "No"
-                      }
+                      <b> precise Box Needed</b>: ${item.preciseBoxNeeded ? "Yes" : "No"
+                    }
                   </p>
                   <p>
                       <b> numberOfColours</b>: ${item.numberOfColours}
                   </p>
                   <p>
-                      <b> suggestPrintType</b>: ${
-                        item.suggestPrintType ? "Yes" : "No"
-                      }
+                      <b> suggestPrintType</b>: ${item.suggestPrintType ? "Yes" : "No"
+                    }
                   </p>
                   <p>
-                      <b> is stacked product</b>: ${
-                        item.isStackedProduct ? "Yes" : "No"
-                      }
+                      <b> is stacked product</b>: ${item.isStackedProduct ? "Yes" : "No"
+                    }
                   </p>
                   <hr />
               </td>
@@ -144,7 +140,7 @@ const newOrderRequestTemplate = (order) => {
   </table>
 </body>
 </html>`;
-  return emailTemplate;
+    return emailTemplate;
 };
 
 module.exports = newOrderRequestTemplate;
