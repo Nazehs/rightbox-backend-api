@@ -20,7 +20,10 @@ const allowedOrigins = [
   "http://localhost:3000",
   "https://rightbox.herokuapp.com",
   "https://rightbox.herokuapp.com/",
-  "https://rightbox-web-bgjx-l3z7d04xg-nazehs.vercel.app/"
+  "https://rightbox-web-bgjx-l3z7d04xg-nazehs.vercel.app/",
+  "https://rightbox-web-bgjx-l3z7d04xg-nazehs.vercel.app",
+  "https://rightbox-web-bgjx-8bwox6jqs-nazehs.vercel.app",
+  "https://rightbox-web-bgjx-8bwox6jqs-nazehs.vercel.app/"
 ];
 
 const options = {
