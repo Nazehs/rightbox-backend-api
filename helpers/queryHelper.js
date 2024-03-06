@@ -198,5 +198,6 @@ class Queries {
     ])
     .toArray();
 }
+}
 
 module.exports = Queries;
