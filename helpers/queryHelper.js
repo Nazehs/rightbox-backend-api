@@ -175,7 +175,8 @@ class Queries {
   }
 
  static async queryAllCardboards(pageSize = 10, skip = 0) {
-  return cardboard
+   try{
+     return cardboard
     .aggregate([
       {
         $sort: {
@@ -197,6 +198,11 @@ class Queries {
       },
     ])
     .toArray();
+     
+   }catch(e){
+     console.log(`Error From Query =>  ${e}`)
+   }
+  
 }
 }
 
