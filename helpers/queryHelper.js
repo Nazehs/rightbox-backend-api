@@ -174,21 +174,29 @@ class Queries {
     return await userRequest.find({ mobileNumber: username }).toArray();
   }
 
-  static async queryAllCardboards(pageSize = 10, skip = 0) {
-    return cardboard
-      .aggregate([
-        {
-          $facet: {
-            results: [{ $skip: skip }, { $limit: pageSize }],
-            totalCount: [
-              {
-                $count: "count",
-              },
-            ],
-          },
+ static async queryAllCardboards(pageSize = 10, skip = 0) {
+  return cardboard
+    .aggregate([
+      {
+        $sort: {
+          code: 1,
         },
-      ])
-      .toArray();
-  }
+      },
+      {
+        $facet: {
+          results: [
+            { $skip: skip },
+            { $limit: pageSize }
+          ],
+          totalCount: [
+            {
+              $count: "count",
+            },
+          ],
+        },
+      },
+    ])
+    .toArray();
 }
+
 module.exports = Queries;
